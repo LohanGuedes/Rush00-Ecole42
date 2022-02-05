@@ -11,30 +11,30 @@
 /* ************************************************************************** */
 // y > z > x // x > y
 void	ft_putchar(char c);
-void	rush(int y, int x)
+void	rush(int x, int y)
 {
 	int lines;
 	int cols;
 
-    if (y < 1 || x < 1)
+    if (x < 1 || y < 1)
     {
         return;
     }
 
 	lines = 1;
-	while(lines <= x)
+	while(lines <= y)
 	{
 		cols = 1;
-		while(cols <= y)
+		while(cols <= x)
 		{
-			if((lines == 1 && cols == 1) || (lines == x && cols == y && lines != 1 && cols != 1))
+			if((lines == 1 && cols == 1) || (lines == y && cols == x && lines != 1 && cols != 1))
 				ft_putchar('A');
-			else if((lines == 1 && cols == y) || (lines == x && cols == 1))
+			else if((lines == 1 && cols == x) || (lines == y && cols == 1))
 				ft_putchar('C');
-			else if((lines == 1  && cols != 1 && cols != y)
-            || (cols == 1 && lines != 1 && lines != x)
-            || (cols == y && lines != 1 && lines != x)
-            || (lines == x && cols != 1 && cols != y))
+			else if((lines == 1  && cols != 1 && cols != x)
+            || (cols == 1 && lines != 1 && lines != y)
+            || (cols == x && lines != 1 && lines != y)
+            || (lines == y && cols != 1 && cols != x))
 				ft_putchar('B');
 			else
 				ft_putchar(' ');
