@@ -10,18 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- *  1st goal: see if I can create an array with the size equal as number given
- *  2nd goal: Print the first line based on the example [A x*b C]
- *
- *  AA
- *  BB
- *  BB
- *  CC
-*/
-
 void	ft_putchar(char c);
 void	ft_print_line(char arr[], int len);
+void	populate(char arr[], char start_end , char mid_char, int len);
 
 void rush(int width, int height)
 {
@@ -30,68 +21,52 @@ void rush(int width, int height)
 
 	int offset;
 	char first_line[width];
-	char middle_line[width];
+	char middle_lines[width];
 	char last_line[width];
 
-
 	//1. Populate the first_line.
-	first_line[0] = 'A';
-	first_line[width-1] = 'A';
-	offset = 1;
-	while (offset <= width - 2)
-	{
-		first_line[offset] = 'B';
-		offset++;
-	}
+	populate(first_line, 'A', 'B', width);
+	//1. Populate the middle lines*
+	populate(middle_lines, 'B', ' ', width);
+	//3. Populate the last_line
+	populate(last_line, 'C', 'B', width);
 
-	//2. Populate the last_line
-	last_line[0] = 'C';
-	last_line[width-1] = 'C';
-	offset = 1;
-	while (offset <= width - 2)
-	{
-		last_line[offset] = 'B';
-		offset++;
-	}
-
-	//3. Populate the middle lines*
-	middle_line[0] = 'B';
-	middle_line[width-1] = 'B';
-	offset = 1;
-	while (offset <= width - 2)
-	{
-		middle_line[offset] = ' ';
-		offset++;
-	}
-
-	//print each line
+	//Print the first line
 	ft_print_line(first_line, width - 1);
 	ft_putchar('\n');
-	ft_print_line(middle_line, width - 1);
-	ft_putchar('\n');
-	ft_print_line(last_line, width - 1);
-	ft_putchar('\n');
+	//Print the middle line(s)
+	offset = 0;
+	while (offset <= height - 3)
+	{
+		ft_print_line(middle_lines, width - 1);
+		ft_putchar('\n');
+		offset++;
+	}
 
-
+	if (height > 2){
+		ft_print_line(last_line, width - 1);
+		ft_putchar('\n');
+	}
 }
 
+void	populate(char arr[], char start_end , char mid_char, int len)
+{
+	int offset;
 
-/* void populate(char arr[], char start_end , char mid_char) */
-/* { */
-/* 	arr[0] = 'A'; */
-/* 	arr[width-1] = star_end; */
-/* 	offset = 1; */
-/* 	while (offset <= width - 2) */
-/* 	{ */
-/* 		arr[offset] = mid_char; */
-/* 		offset++; */
-/* 	} */
-/* } */
-
+	arr[0] = start_end;
+	arr[len-1] = start_end;
+	offset = 1;
+	while (offset <= len - 2)
+	{
+		arr[offset] = mid_char;
+		offset++;
+	}
+}
 
 void	ft_print_line(char arr[], int len)
 {
 	int offset;
+
 	offset = 0;
 	while (offset <= len)
 	{
