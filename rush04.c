@@ -22,7 +22,7 @@ void	rush(int y, int x)
 		cols = 1;
 		while(cols <= y)
 		{
-			if((lines == 1 && cols == 1) || (lines == x && cols == y) || (cols == 1))
+			if((lines == 1 && cols == 1) || (lines == x && cols == y && lines != 1 && cols != 1))
 				ft_putchar('A');
 			else if((lines == 1 && cols == y) || (lines == x && cols == 1))
 				ft_putchar('C');
