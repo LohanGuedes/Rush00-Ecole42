@@ -9,12 +9,17 @@
 /*   Updated: 2022/02/04 23:43:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+// y > z > x // x > y
 void	ft_putchar(char c);
 void	rush(int y, int x)
 {
 	int lines;
 	int cols;
+
+    if (y < 1 || x < 1)
+    {
+        return;
+    }
 
 	lines = 1;
 	while(lines <= x)
