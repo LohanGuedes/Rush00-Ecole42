@@ -7,15 +7,15 @@ void	rush(int x, int y)
 {
 	if (x > 0)
 	{
-		ft_putchar('A');
+		ft_putchar('/');
 		if (x > 2)
 		{
-			print_filler('B', x - 2);
-			ft_putchar('A');
+			print_filler('*', x - 2);
+			ft_putchar('\\');
 		}
 		else if (x == 2)
 		{
-			ft_putchar('A');
+			ft_putchar('\\');
 		}
 		ft_putchar('\n');
 		print_lines(x, y);
@@ -60,14 +60,14 @@ void	print_lines(int x, int y)
 	if (y == 1)
 		return ;
 	else if (y == 2)
-		print_line('C', 'B', 'C', x);
+		print_line('/', '*', '\\', x);
 	else if (y > 2)
 	{
 		while (offset < y - 2)
 		{
-			print_line('B', ' ', 'B', x);
+			print_line('*', ' ', '*', x);
 			offset++;
 		}
-		print_line('C', 'B', 'C', x);
+		print_line('\\', '*', '/', x);
 	}
 }
