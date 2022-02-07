@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush00.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/07 03:17:05 by coder             #+#    #+#             */
+/*   Updated: 2022/02/07 03:18:45 by coder            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 void	ft_putchar(char c);
 void	print_line(char start, char middle, char end, int size);
 void	print_filler(char c, int times);
@@ -5,7 +17,7 @@ void	print_lines(int x, int y);
 
 void	rush(int x, int y)
 {
-	if (x <= 0 || y <= 0)
+	if (x < 1 || y < 1 || x > 2147483647 || y > 2147483647)
 		return ;
 	ft_putchar('o');
 	if (x > 2)

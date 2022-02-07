@@ -1,73 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush03.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/07 00:27:11 by coder             #+#    #+#             */
+/*   Updated: 2022/02/07 00:27:11 by coder            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 void	ft_putchar(char c);
-void	print_line(char start, char middle, char end, int size);
-void	print_filler(char c, int times);
-void	print_lines(int x, int y);
+void	populate_rush(int x, int y);
 
 void	rush(int x, int y)
 {
-	if (x > 0)
+	if (x < 1 || y < 1 || x > 2147483647 || y > 2147483647)
+		return ;
+	else
+		populate_rush(x, y);
+}
+
+void	populate_rush(int x, int y)
+{
+	int	lines;
+	int	cols;
+
+	lines = 1;
+	while (lines <= y)
 	{
-		ft_putchar('A');
-		if (x > 2)
+		cols = 1;
+		while (cols <= x)
 		{
-			print_filler('B', x - 2);
-			ft_putchar('C');
-		}
-		else if (x == 2)
-		{
-			ft_putchar('C');
+			if ((lines == 1 && cols == 1) || (lines == y && cols == 1))
+				ft_putchar('A');
+			else if ((lines == 1 && cols == x) || (lines == y && cols == 1)
+				|| (lines == y && cols == x))
+				ft_putchar('C');
+			else if ((lines == 1 && cols > 1) || (cols == 1 && lines > 1)
+				|| (cols == x && lines > 1) || (lines == y && cols > 1))
+				ft_putchar('B');
+			else
+				ft_putchar(' ');
+		cols++;
 		}
 		ft_putchar('\n');
-		print_lines(x, y);
+	lines++;
 	}
 }
 
-void	print_filler(char c, int times)
-{
-	int	offset;
-
-	offset = 0;
-	while (offset < times)
-	{
-		ft_putchar(c);
-		offset++;
-	}
-}
-
-void	print_line(char start, char middle, char end, int size)
-{
-	int	offset;
-
-	ft_putchar(start);
-	offset = 0;
-	while (offset < size - 2)
-	{
-		ft_putchar(middle);
-		offset++;
-	}
-	if (size >= 2)
-	{
-		ft_putchar(end);
-	}
-	ft_putchar('\n');
-}
-
-void	print_lines(int x, int y)
-{
-	int	offset;
-
-	offset = 0;
-	if (y == 1)
-		return ;
-	else if (y == 2)
-		print_line('A', 'B', 'C', x);
-	else if (y > 2)
-	{
-		while (offset < y - 2)
-		{
-			print_line('B', ' ', 'B', x);
-			offset++;
-		}
-		print_line('A', 'B', 'C', x);
-	}
-}
